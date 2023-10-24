@@ -97,7 +97,7 @@ function envt = make_envt_sb_ROMS(farm,setup,time);
 
  
 % PAR0 is the PAR at the surface; for now uses ROMS at first layer
- envt.PAR0 = roms.PAR(:,1)'/5;
+ envt.PAR0 = roms.PAR(:,1)'/5 % ;(µmol m-2) to w/m2
  %envt.PAR0(isnan(envt.PAR0)) = nanmean(roms.PAR(:,1)'/5);
 % Note, depth-dependent PAR not needed, here removes it
 % (But could keep it for comparison purposes)
