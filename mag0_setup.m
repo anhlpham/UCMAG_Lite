@@ -11,6 +11,7 @@
 
  % ROMS/Environment input file specifications
  % Input folder:
+ %% Please change the directory here
  setup.in_dir = '/Users/anhpham/Desktop/Work/Kelp/MAG_0_ucla/MAG_0_ucla/datasets/ROMS_BEC_MAG_input';
  % Input file (as matlab structure)
  setup.in_file = 'z_ROMSdata_2005.mat';

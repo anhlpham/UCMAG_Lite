@@ -1,8 +1,9 @@
 function mag = mag0_run(varargin)
 %----------------------------------------------------------------------
-%  MAG0 - UCLA
-%  Version 0.2, D. Bianchi
+%  MAG0 - UCLA - Lite
+%  Version 0.2, D. Bianchi, A.Pham
 %      wrapped up code into individual functions
+%      obtaining environmental forcings from LTER timeseries dataset
 %  Version 0.1, A. Pham, D. Bianchi, D. Dauhajre, C. Fieder, 10/28/2022
 % 
 %  mag0 - simplified model of macroalgal growth in 1-D
@@ -40,6 +41,7 @@ function mag = mag0_run(varargin)
 %    Farm array: z_cult:dz:0
 %  Data Source:
 %    TBD
+%    LTER
 %----------------------------------------------------------------------
 addpath('./functions/');
 addpath('./biology/');
@@ -72,7 +74,7 @@ A = parse_pv_pairs(A, varargin);
 %----------------------------------------------------------------------
 % Initializes simulation setup
 % This includes start and end time, timestep info, I/O info etc.
- mag.setup = mag0_setup;
+ mag.setup = mag0_setup % check to change the corresponding directory;
 
 % Initializes biological parameters used by MAG
 % Each species should have different parameters (will be included as option)
