@@ -115,6 +115,7 @@ A = parse_pv_pairs(A, varargin);
 
 % Defines Environmental input for the run
 %mag.envt = make_envt_testcase(mag.farm,mag.time); 
+% use make_envt_sb_ROMS to get forcings as ROMS outputs
  mag.envt = make_envt_sb_obs(mag.farm,mag.setup,mag.time); 
      
 % Initialize output structure
