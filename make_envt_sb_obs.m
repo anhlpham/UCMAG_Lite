@@ -51,7 +51,7 @@ function envt = make_envt_sb_ROMS(farm,setup,time);
  nt_roms = length(roms.datetime);
 %----------------------------------------------------------------------
 % Repeat data from the surface to the bottom for now
- roms_vars = {'u','v','NO3','PAR','temp','wavemeanHS','wavemeanTP'}; 
+ roms_vars = {'u','v','NO3','PAR','temp','wavemeanHS','wavemeanTP','urea','NH4'}; 
  roms_nvar = length(roms_vars);
  clear envt
  for indv=1:roms_nvar
@@ -63,7 +63,7 @@ function envt = make_envt_sb_ROMS(farm,setup,time);
  
 % For now fills in ROMS output assuming daily time-step
 % Interpolates betweeen ROMS depth grid and MAG farm grid
- roms_vars = {'SPCHL','DIATCHL','NH4','DOC'}; 
+ roms_vars = {'SPCHL','DIATCHL','DOC'}; 
  roms_nvar = length(roms_vars);
  for indv=1:roms_nvar
     % ROMS variable need to be size of [nz,nt]
@@ -76,8 +76,8 @@ function envt = make_envt_sb_ROMS(farm,setup,time);
 
 %----------------------------------------------------------------------
 % Postprocesses some of the inputs
- envt.DON = 16/106 * envt.DOC;
- %envt.DON = 5*envt.urea;
+ %envt.DON = 16/106 * envt.DOC;
+ envt.DON = 5*envt.urea;
  envt.chla = envt.SPCHL + envt.DIATCHL;
  envt = rmfield(envt,{'SPCHL','DIATCHL'});
 % Converts velocities from m/s to m/h
@@ -90,8 +90,6 @@ function envt = make_envt_sb_ROMS(farm,setup,time);
  envt.T = envt.temp;
  envt = rmfield(envt,{'temp'});
 
- envt.NH4 = envt.NH4(:,1:365);
- envt.DON = envt.DON(:,1:365);
  envt.chla = envt.chla(:,1:365);
 
 
@@ -106,7 +104,7 @@ function envt = make_envt_sb_ROMS(farm,setup,time);
  end
 
 % Removes other variables not needed:
- envt = rmfield(envt,{'DOC'});
+ envt = rmfield(envt,{'DOC','urea'});
  
 % Adds need variables (temporary - this should be from an input file)
 

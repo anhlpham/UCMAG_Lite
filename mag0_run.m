@@ -117,6 +117,7 @@ A = parse_pv_pairs(A, varargin);
 %mag.envt = make_envt_testcase(mag.farm,mag.time); 
 % use make_envt_sb_ROMS to get forcings as ROMS outputs
  mag.envt = make_envt_sb_obs(mag.farm,mag.setup,mag.time); 
+% mag.envt = make_envt_sb_ROMS(mag.farm,mag.setup,mag.time); 
      
 % Initialize output structure
  mag = mag0_init_output(mag);
